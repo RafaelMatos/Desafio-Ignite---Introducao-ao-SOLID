@@ -1,0 +1,76 @@
+{
+    "openapi":"3.0.0",
+    "info": {
+        "title":"Desafio 2 SOLID",
+        "description" : "This is a API user",
+        "contact" : {
+            "email" : "rafael-matos@outlook.com"
+        }
+    },
+    "paths" : {
+        "/users":{
+            "post":{
+                "tags": ["User"],
+                "summary":"Create a user",
+                "description":"Create a new user",
+                "requestBody" : {
+                    "content" : {
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "name":{
+                                        "type":"string"
+                                    },
+                                    "email":{
+                                        "type":"string"
+                                    }
+                                },
+                                "example":{
+                                    "name":"User name sample",
+                                    "email":"User email sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "response":{
+                    "201":{
+                        "description":"Created"
+                    },
+                    "400":{
+                        "description": "User already exists"
+                    }
+                }
+            }
+        },
+        "/users/:user_id/admin":{
+            "patch":{
+                "tags": ["User"],
+                "summary":"Turn user admin",
+                "description":"Turn a user in a user admin",
+                "parameters" : [{
+                    "in":"path",
+                    "name":"user_id",
+                    "required":true,
+                    "description":"User's ID",
+                    "schema":{
+                        "type":"string",
+                        "example":"9bb6d1bd-80af-42cb-bfdb-a8726b5dfbba"
+                    }
+                }
+                ]
+                ,
+                "response":{
+                    "200":{
+                        "description":"User updated"
+                    },
+                    "404":{
+                        "description": "User don't exists"
+                    }
+                }
+            }
+        }
+
+    }
+}
