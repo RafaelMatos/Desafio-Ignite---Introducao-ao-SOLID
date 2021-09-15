@@ -18,6 +18,7 @@ class TurnUserAdminUseCase {
       throw new Error("User is already a admin");
     }
     user.admin = true;
+    user.updated_at = new Date();
     return user;
   }
 }
