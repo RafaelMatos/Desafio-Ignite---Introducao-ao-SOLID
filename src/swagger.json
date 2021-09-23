@@ -34,7 +34,7 @@
                         }
                     }
                 },
-                "response":{
+                "responses":{
                     "201":{
                         "description":"Created"
                     },
@@ -42,9 +42,30 @@
                         "description": "User already exists"
                     }
                 }
+            },
+            "get":{
+                "tags": ["User"],
+                "summary":"List all user",
+                "description":"List all user",
+                
+                "responses":{
+                    "201":{
+                        "description":"A JSON array of users",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description": "Any user created"
+                    }
+                }
             }
         },
-        "/users/:user_id/admin":{
+        "/users/{user_id}/admin":{
             "patch":{
                 "tags": ["User"],
                 "summary":"Turn user admin",
@@ -61,7 +82,7 @@
                 }
                 ]
                 ,
-                "response":{
+                "responses":{
                     "200":{
                         "description":"User updated"
                     },
