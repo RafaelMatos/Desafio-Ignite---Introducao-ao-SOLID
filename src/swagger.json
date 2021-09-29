@@ -91,6 +91,40 @@
                     }
                 }
             }
+        },
+        "/users/{user_id}":{
+            "get":{
+                "tags": ["User"],
+                "summary":"User profile",
+                "description":"List a user profile",
+                "parameters" : [{
+                    "in":"path",
+                    "name":"user_id",
+                    "required":true,
+                    "description":"User's ID",
+                    "schema":{
+                        "type":"string",
+                        "example":"9bb6d1bd-80af-42cb-bfdb-a8726b5dfbba"
+                    }
+                }
+                ]
+                ,
+                "responses":{
+                    "200":{
+                        "description":"User profile",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object"
+                                }
+                            }
+                        }
+                    },
+                    "404":{
+                        "description": "User don't exists"
+                    }
+                }
+            }
         }
 
     }
